@@ -22,7 +22,7 @@ body{
 
 .users {
     margin-top: 25px;
-    margin-left: 10px;
+    margin-left: 15px;
     display: flex;
     flex-direction: column;
 }
