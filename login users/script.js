@@ -1,5 +1,5 @@
 async function fetchApi() {
-    fetch('https://dummyjson.com/auth/login', {
+    const response = await fetch('https://dummyjson.com/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -9,9 +9,14 @@ async function fetchApi() {
             expiresInMins: 30,
         }),
     })
-        .then(res => res.json())
-        .then(console.log);
-        
-}
+    const data = await response.json();
 
-fetchApi();
+    if (data.accessToken) {
+        console.log(data.accessToken);
+
+        localStorage.setItem('Token', data.accessToken);
+        window.location.href = 'dashboard.html';
+    } else {
+        window.location.href = 'index.html';
+    }
+}
