@@ -12,10 +12,8 @@ async function fetchApi() {
     const data = await response.json();
 
     if (data.accessToken) {
-        console.log(data.accessToken);
-
         localStorage.setItem('Token', data.accessToken);
-        window.location.href = 'dashboard.html';
+        window.location.href = "posts/dashboard.html";
     } else {
         window.location.href = 'index.html';
     }
